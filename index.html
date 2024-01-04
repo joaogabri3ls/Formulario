@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea,
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 26px);
+        }
+
+        input[type="button"] {
+            background-color: #42a5f5;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type="button"]:hover {
+            background-color: #2196f3;
+        }
+
+        #message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+        .btn{
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        button{
+            background-color: #42a5f5;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #2196f3;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" autocomplete="off" id="product-form">
+        <label>Nome:<br>
+            <input type="text" name="nome" id="nome" required />
+        </label><br>
+        <label>Descrição:<br>
+            <textarea name="descricao" id="descricao" cols="30" rows="10" required></textarea>
+        </label><br />
+        <label>Quantidade:
+            <select name="quantidade" id="quantidade" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </label><br>
+        <label>Preço por unidade:<br>
+            R$ <input type="number" placeholder="0.00" id="preco" required>
+        </label>
+        <input type="button" value="Enviar" onclick="validateAndShowMessage()">
+    </form>
+
+    <div id="overlay">
+        <div id="message-box">
+            <p>Os produtos foram cadastrados.</p>
+            <p>Deseja cadastrar outro produto?</p>
+
+            <div class="btn">
+                <button onclick="resetForm()">Sim</button>
+                <button onclick="hideMessage()">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateAndShowMessage() {
+            // Validar se todos os campos estão preenchidos
+            var nome = document.getElementById("nome").value;
+            var descricao = document.getElementById("descricao").value;
+            var quantidade = document.getElementById("quantidade").value;
+            var preco = document.getElementById("preco").value;
+
+            if (nome && descricao && quantidade && preco) {
+                showMessage();
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
+
+        function showMessage() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("message-box").style.display = "block";
+        }
+
+        function hideMessage() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("message-box").style.display = "none";
+        }
+
+        function resetForm() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("message-box").style.display = "none";
+            document.getElementById("product-form").reset();
+        }
+    </script>
+</body>
+
+</html>
