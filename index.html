@@ -117,10 +117,10 @@
 <body>
     <form action="#" autocomplete="off" id="product-form">
         <label>Nome:<br>
-            <input type="text" name="nome" id="nome" required />
+            <input type="text" name="n" id="nome" required />
         </label><br>
         <label>Descrição:<br>
-            <textarea name="descricao" id="descricao" cols="30" rows="10" required></textarea>
+            <textarea name="d" id="descricao" cols="30" rows="10" required></textarea>
         </label><br />
         <label>Quantidade:
             <select name="quantidade" id="quantidade" required>
@@ -137,7 +137,7 @@
             </select>
         </label><br>
         <label>Preço por unidade:<br>
-            R$ <input type="number" placeholder="0.00" id="preco" required>
+            R$ <input type="number" name="p" placeholder="0.00" id="preco" required>
         </label>
         <input type="button" value="Enviar" onclick="validateAndShowMessage()">
     </form>
