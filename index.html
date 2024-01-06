@@ -139,7 +139,7 @@
         <label>Preço por unidade:<br>
             R$ <input type="number" name="p" placeholder="0.00" id="preco" required>
         </label>
-        <input type="button" value="Enviar" onclick="validateAndShowMessage()">
+        <input type="button" name="enviar" value="Enviar" onclick="validateAndShowMessage()">
     </form>
 
     <div id="overlay">
@@ -148,8 +148,8 @@
             <p>Deseja cadastrar outro produto?</p>
 
             <div class="btn">
-                <button onclick="resetForm()">Sim</button>
-                <button onclick="hideMessage()">Não</button>
+                <button name="sim" onclick="resetForm()">Sim</button>
+                <button name="nao" onclick="hideMessage()">Não</button>
             </div>
         </div>
     </div>
